@@ -12,17 +12,17 @@ namespace Viaggiatore.Controllers.API
     {
         public IActionResult Get(string? cerca)
         {
-            List<Pacchetto> pizzaLista1 = new List<Pacchetto>();
+            List<Pacchetto> box = new List<Pacchetto>();
             using (ViaggioContext db = new ViaggioContext())
             {
 
                 // LOGICA PER RICERCARE I POST CHE CONTENGONO NEL TIUOLO O NELLA DESCRIZIONE LA STRINGA DI RICERCA
                 if (cerca != null && cerca != "")
                 {
-                    pizzaLista1 = db.pacchetti.Where(box => box.titolo.Contains(cerca)).ToList<Pacchetto>();
+                    box= db.pacchetti.Where(box => box.titolo.Contains(cerca)).ToList<Pacchetto>();
                 }
             }
-            return Ok(pizzaLista1);
+            return Ok(box);
         }
     }
 }
