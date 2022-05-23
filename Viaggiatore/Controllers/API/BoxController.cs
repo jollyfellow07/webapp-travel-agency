@@ -12,10 +12,11 @@ namespace Viaggiatore.Controllers.API
     {
         public IActionResult Get(string? cerca)
         {
+            
             List<Pacchetto> box = new List<Pacchetto>();
             using (ViaggioContext db = new ViaggioContext())
             {
-
+                 box = db.pacchetti.ToList();
                 // LOGICA PER RICERCARE I POST CHE CONTENGONO NEL TIUOLO O NELLA DESCRIZIONE LA STRINGA DI RICERCA
                 if (cerca != null && cerca != "")
                 {
