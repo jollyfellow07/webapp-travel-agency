@@ -1,0 +1,36 @@
+﻿@{
+}
+@model List<Pacchetto>
+<main>
+    <div class="container">
+        <div class="row justify-content-center mx-5">
+
+            @if(Model.Count() == 0)
+            {
+                <h3>Mi dispiace non ci sono BoxViaggi!</h3>
+            }
+            else
+            {
+                @foreach(Pacchetto box in Model)
+                {
+                <div class="col-12 col-md-6 col-lg-4 text-center mt-3">
+                    <div class="card shadow mb-5 bg-body rounded justify-content-center" style="width: 24rem;">
+                        <img src=@box.immagine  height="350" class="d-block w-100" alt="...">
+                            <div class="card-body p-0 bg-opacity-50">
+                                <h5 class="card-title bg-info text-white p-2">@box.titolo</h5>
+                                    <p class="p-4"> 
+                                        <b>@box.Prezzo €</b>
+                                    </p>
+                                <p>
+                                <form action="@Url.Action("Elimina", "Pizza", new {id= box.id})" method="post">
+                                    <a type="button" href=@Url.Action("Dettagli", "Viaggio", new { id = box.id })  class="btn btn-info">Dettagli</a>
+                                </form>
+                                </p>
+                            </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+</main>

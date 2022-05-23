@@ -1,14 +1,10 @@
 ﻿body
 {
-    background: url(../img/sfondo.jpg) no-repeat center center fixed;
+    background: url(../img/sfondo.jpg) fixed center; 
     background-size: cover;
     height: 100%;
-    overflow: hidden;
 }
-#fix-bot {
-    padding-top: 10px;
-    padding-bottom: 0px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.font {
+    font-family: Copperplate, Papyrus, fantasy;
+    color: black;
 }

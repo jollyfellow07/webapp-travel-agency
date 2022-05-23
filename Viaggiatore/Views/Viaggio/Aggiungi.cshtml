@@ -1,0 +1,36 @@
+﻿@model Pacchetto
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+           <div class="d-flex align-items-center ">
+               <h1 class="font">Nuovo BOX</h1>
+           </div>
+            <form action=@Url.Action("Aggiungi", "Viaggio") method="post" class="row g-3">
+                @Html.AntiForgeryToken()
+              <div class="col-md-6">
+                <strong class="font text-white">Titolo:</strong>
+                <input asp-for="titolo" type="text" class="d-block w-100">
+                <span asp-validation-for="titolo" class="text-danger"></span>
+              </div>
+              <div class="col-md-6">
+                <strong class="font text-white">Inserisci url</strong>
+                <input asp-for="immagine" type="text" class="d-block w-100">
+                <span asp-validation-for="immagine" class="text-danger"></span>
+              </div>
+               <div class="col-md-6">
+                <strong class="font text-white">Prezzo:</strong>
+                <input asp-for="Prezzo" type="text" class="d-block w-100">
+                <span asp-validation-for="Prezzo" class="text-danger"></span>
+              </div>
+              <div class="col-md-6">
+                <strong class="font text-white">Descrizione viaggio:</strong>
+                <textarea asp-for="descrizione" rows="10" class="d-block w-100"></textarea>
+                <span asp-validation-for="descrizione" class="text-danger"></span>
+              </div>
+              <div class="col-12 justify-content-center text-center">
+                <button type="submit" class="btn btn-warning mb-2">Salva</button>
+              </div>
+            </form>
+        </div>
+   </div>
+</div>

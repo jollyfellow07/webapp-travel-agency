@@ -1,0 +1,19 @@
+﻿@model Pacchetto
+<div class="container">
+    <div class="text-center row justify-content-center m-5 ">
+        <div class="col-12 col-md-6 col-lg-4 text-center mt-3">
+            <div class="card shadow mb-5 bg-body rounded justify-content-center" style="width: 24rem;">
+                <img src=@Model.immagine  height="350" class="d-block w-100" alt="...">
+                    <div class="card-body p-0">
+                        <h5 class="card-title bg-info text-white p-2">@Model.titolo</h5>
+                         <p class="p-4"> 
+                            @Model.descrizione
+                        </p>
+                        <p class="p-4"> 
+                            <b>@Model.Prezzo €</b>
+                        </p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</di>
