@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Viaggiatore.Data;
 using Viaggiatore.Models;
 
@@ -9,14 +10,19 @@ namespace Viaggiatore.Controllers.API
     [ApiController]
     public class BoxController : ControllerBase
     {
-        public IActionResult Get()
+        public IActionResult Get(string? cerca)
         {
-            List<Pacchetto> boxViaggi;
+            List<Pacchetto> pizzaLista1 = new List<Pacchetto>();
             using (ViaggioContext db = new ViaggioContext())
             {
-                boxViaggi = db.pacchetti.ToList();
+
+                // LOGICA PER RICERCARE I POST CHE CONTENGONO NEL TIUOLO O NELLA DESCRIZIONE LA STRINGA DI RICERCA
+                if (cerca != null && cerca != "")
+                {
+                    pizzaLista1 = db.pacchetti.Where(box => box.titolo.Contains(cerca)).ToList<Pacchetto>();
+                }
             }
-            return Ok(boxViaggi);
+            return Ok(pizzaLista1);
         }
     }
 }
