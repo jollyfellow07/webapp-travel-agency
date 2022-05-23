@@ -10,7 +10,7 @@ namespace Viaggiatore.Controllers.API
     [ApiController]
     public class BoxController : ControllerBase
     {
-        public IActionResult Get(string? cerca)
+        public IActionResult Get(string? cerca, int? id)
         {
             
             List<Pacchetto> box = new List<Pacchetto>();
@@ -20,10 +20,14 @@ namespace Viaggiatore.Controllers.API
                 // LOGICA PER RICERCARE I POST CHE CONTENGONO NEL TIUOLO O NELLA DESCRIZIONE LA STRINGA DI RICERCA
                 if (cerca != null && cerca != "")
                 {
-                    box= db.pacchetti.Where(box => box.titolo.Contains(cerca)).ToList<Pacchetto>();
+                    box= db.pacchetti
+                        .Where(box => box.titolo
+                        .Contains(cerca))
+                        .ToList<Pacchetto>();
                 }
             }
             return Ok(box);
         }
+       
     }
 }

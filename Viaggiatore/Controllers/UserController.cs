@@ -8,5 +8,11 @@ namespace Viaggiatore.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Dettagli(int id)
+        {
+            return View("dettagli");
+        }
     }
+
 }
