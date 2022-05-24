@@ -14,10 +14,39 @@
         <!-- qui verranno mostrati gli elementi -->
     </div>
         <!-- Form -->
+        <h1>Hai una richiesta?</h1>
     <div>
-
     </div>
-</div>
+    <div class="container mb-5">
+     <form action="" method="post">
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label>Nome</label>
+          <input type="text" class="d-block w-100" id="Nome" placeholder="Nome">
+        </div>
+        <div class="form-group col-6">
+          <label>Cognome</label>
+          <input type="text" class="d-block w-100" id="Cognome" placeholder="Cognome">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="d-block w-100" id="Email" placeholder="email@gmail.com">
+      </div>
+      <div class="form-group">
+        <label>Address 2</label>
+        <input type="Telefono" class="d-block w-100" id="Telefono" placeholder="XXXXXXXXXX">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label>Testo</label>
+          <textarea rows="10" class="d-block w-100" id="Testo" ></textarea>
+      </div>
+      <button type="submit" class="btn btn-warning">Invia Richiesta</button>
+    </form>
+ </div>
+
+
 
 @section Scripts {
 
@@ -64,37 +93,30 @@
     
 
         //Funzione per il form
-            function Richiesta(){
+            function Richiesta(event){
+                event.preventDefault();
+            var url = window.location.pathname;
+            var idBox = url.substring(url.lastIndexOf('/') + 1);
+                      var nome = document.getElementById('Nome').value; 
+                      var cognome = document.getElementById('Cognome').value; 
+                      var telefono = document.getElementById('Telefono').value; 
+                      var testo = document.getElementById('Testo').value; 
+                      var email = document.getElementById('Email').value;
+                      var id = idBox;
 
-            console.log(id);
-            axios.get('/api/box/getid/' + id ).then((result) => {
-                // Codice che verrà eseguito quando arrivano i dati dalla mia web api
-                console.log("Ho ricevuto i miei post, evviva!");
-                console.log(result);
-                console.log(result.data.immagine);
-                        document.getElementById('post-div').innerHTML += 
-                            `
-                            <div class="container">
-                                <div class="text-center row justify-content-center m-5 ">
-                                    <div class="col-12 col-md-6 col-lg-4 text-center mt-3">
-                                        <div class="card shadow mb-5 bg-body rounded justify-content-center" style="width: 24rem;">
-                                            <img src=${result.data.immagine}  height="350" class="d-block w-100" alt="...">
-                                                <div class="card-body p-0">
-                                                    <h5 class="card-title bg-info text-white p-2">${result.data.titolo}</h5>
-                                                     <p class="p-4"> 
-                                                        ${result.data.descrizione}
-                                                    </p>
-                                                    <p class="p-4"> 
-                                                        <b>${result.data.prezzo} €</b>
-                                                    </p>
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            `
-                    
-                
+                      var richiestaUtente = {
+                          nome: Nome,
+                          cognome: Cognome,
+                          email: Email,
+                          telefono: Telefono,
+                          testo: Testo,
+                          Viaggioid: id
+                      }
+
+            axios.post('/api/box/post',  richiestaUtente ).then((result) => {
+                          
+                alert("Ho aggiunto la nuova richiesta");
+
             }).catch((error) => {
                 console.log("C'è stato un errore: " + error);
             });
