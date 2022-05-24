@@ -10,7 +10,7 @@ namespace Viaggiatore.Controllers.API
     [ApiController]
     public class BoxController : ControllerBase
     {
-        public IActionResult Get(string? cerca, int? id)
+        public IActionResult Get(string? cerca)
         {
             
             List<Pacchetto> box = new List<Pacchetto>();
@@ -28,6 +28,24 @@ namespace Viaggiatore.Controllers.API
             }
             return Ok(box);
         }
-       
+
+
+        [HttpGet("{id}")]
+        public IActionResult GetId(int? id)
+        {
+            using (ViaggioContext db = new ViaggioContext())
+            {
+                if(id != null)
+                {
+              
+                   Pacchetto box = db.pacchetti.Where(box => box.id == id).FirstOrDefault<Pacchetto>();
+                    return Ok(box);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Viaggiatore.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Dettagli(int id)
+        public IActionResult Dettagli()
         {
             return View("dettagli");
         }
