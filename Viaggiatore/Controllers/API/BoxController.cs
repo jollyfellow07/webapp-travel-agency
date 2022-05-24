@@ -56,7 +56,7 @@ namespace Viaggiatore.Controllers.API
             }
             using (ViaggioContext db = new ViaggioContext())
             {
-                RichiestaUtente box = new RichiestaUtente(model.nome, model.cognome, model.email, model.messaggio);
+                RichiestaUtente box = new RichiestaUtente(model.Nome, model.Cognome, model.Email, model.Telefono, model.Testo);
                 db.Add(model);
                 db.SaveChanges();
                 return Ok();

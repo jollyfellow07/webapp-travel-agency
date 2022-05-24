@@ -4,36 +4,44 @@ namespace Viaggiatore.Models
 {
     public class RichiestaUtente
     {
+
+
         [Key]
-        public int id { get; set; }
-        
-        [Required(ErrorMessage = "Il campo nome è obbligatorio")]
-        [StringLength(20, ErrorMessage = "Il titolo non può avere più di 60 caratteri")]
-        public string nome { get; set; }
-
-        [Required(ErrorMessage = "Il campo cognome è obbligatorio")]
-        [StringLength(20, ErrorMessage = "Il titolo non può avere più di 60 caratteri")]
-        public string cognome { get; set; }
-
-        [Required(ErrorMessage = "Il campo email è obbligatorio")]
-        [StringLength(20, ErrorMessage = "Il titolo non può avere più di 60 caratteri")]
-        public string email { get; set; }
-
-        [Required(ErrorMessage = "Il campo messaggio è obbligatorio")]
-        public string messaggio { get; set; }
-
-        public List<Pacchetto> pacchetti { get; set; }
+        public int Id { get; set; }
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [StringLength(75, ErrorMessage = "Il titolo della categoria non puo superare i 75 caratteri")]
+        public string Nome { get; set; }
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [StringLength(75, ErrorMessage = "Il titolo della categoria non puo superare i 75 caratteri")]
+        public string Cognome { get; set; }
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [StringLength(75, ErrorMessage = "Il titolo della categoria non puo superare i 75 caratteri")]
+        public string Email { get; set; }
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [StringLength(75, ErrorMessage = "Il titolo della categoria non puo superare i 75 caratteri")]
+        public int Telefono { get; set; }
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [StringLength(75, ErrorMessage = "Il titolo della categoria non puo superare i 75 caratteri")]
+        public string Testo { get; set; }
+        //metodo per collegare un entità in relazione 1 n
+        public int? PacchettoId { get; set; }
+        public Pacchetto? pacchetti { get; set; }
 
         public RichiestaUtente()
         {
 
+
+
         }
-        public RichiestaUtente(string nome, string cognome, string email, string messaggio)
+        public RichiestaUtente(string nome, string cognome, string email, int telefono, string testo)
         {
-            this.nome = nome;
-            this.cognome = cognome;
-            this.email = email;
-            this.messaggio = messaggio;
+
+            this.Nome = nome;
+            this.Cognome = cognome;
+            this.Telefono = telefono;
+            this.Email = email;
+            this.Testo = testo;
+
         }
 
     }
