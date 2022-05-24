@@ -13,7 +13,11 @@
     <div id="post-div" class="row js_post_cards">
         <!-- qui verranno mostrati gli elementi -->
     </div>
- </div>
+        <!-- Form -->
+    <div>
+
+    </div>
+</div>
 
 @section Scripts {
 
@@ -58,6 +62,44 @@
             });
         }
     
+
+        //Funzione per il form
+            function Richiesta(){
+
+            console.log(id);
+            axios.get('/api/box/getid/' + id ).then((result) => {
+                // Codice che verrà eseguito quando arrivano i dati dalla mia web api
+                console.log("Ho ricevuto i miei post, evviva!");
+                console.log(result);
+                console.log(result.data.immagine);
+                        document.getElementById('post-div').innerHTML += 
+                            `
+                            <div class="container">
+                                <div class="text-center row justify-content-center m-5 ">
+                                    <div class="col-12 col-md-6 col-lg-4 text-center mt-3">
+                                        <div class="card shadow mb-5 bg-body rounded justify-content-center" style="width: 24rem;">
+                                            <img src=${result.data.immagine}  height="350" class="d-block w-100" alt="...">
+                                                <div class="card-body p-0">
+                                                    <h5 class="card-title bg-info text-white p-2">${result.data.titolo}</h5>
+                                                     <p class="p-4"> 
+                                                        ${result.data.descrizione}
+                                                    </p>
+                                                    <p class="p-4"> 
+                                                        <b>${result.data.prezzo} €</b>
+                                                    </p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            `
+                    
+                
+            }).catch((error) => {
+                console.log("C'è stato un errore: " + error);
+            });
+        }
+
     </script>
 }
     

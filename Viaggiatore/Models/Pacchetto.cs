@@ -11,7 +11,7 @@ namespace Viaggiatore.Models
         [StringLength(20, ErrorMessage = "Il titolo non può avere più di 20 caratteri")]
         public string titolo { get; set; }
 
-        [Required(ErrorMessage = "Il campo ingredienti è obbligatorio")]
+        [Required(ErrorMessage = "Il campo descrizione è obbligatorio")]
         public string descrizione { get; set; }
 
         [Required(ErrorMessage = "Il campo immagine è obbligatorio")]
@@ -20,6 +20,9 @@ namespace Viaggiatore.Models
         [Required(ErrorMessage = "Il campo prezzo è obbligatorio")]
         [Range(1, 2000, ErrorMessage = "Il valore inserito non è corretto")]
         public double Prezzo { get; set; }
+
+        public int? richiestaUtenteId { get; set; }
+        public RichiestaUtente? richiestaUtente { get; set; }
         public Pacchetto()
         {
 
