@@ -119,7 +119,7 @@ namespace Viaggiatore.Controllers
                 if (boxViaggio != null)
                 {
                     Pacchetto aggiungoPacchetto = new Pacchetto();
-                    boxViaggio.titolo = box.titolo;
+                    boxViaggio.titolo =  box.titolo;
                     boxViaggio.descrizione = box.descrizione;
                     boxViaggio.Prezzo = box.Prezzo;
                     boxViaggio.immagine = box.immagine;
