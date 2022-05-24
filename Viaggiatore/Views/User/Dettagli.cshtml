@@ -34,7 +34,7 @@
         <input type="text" class="d-block w-100" id="Email" placeholder="email@gmail.com">
       </div>
       <div class="form-group">
-        <label>Address 2</label>
+        <label>Telefono</label>
         <input type="Telefono" class="d-block w-100" id="Telefono" placeholder="XXXXXXXXXX">
       </div>
       <div class="form-row">
@@ -115,7 +115,7 @@
 
             axios.post('/api/box/post',  richiestaUtente ).then((result) => {
                           
-                alert("Ho aggiunto la nuova richiesta");
+                alert("Ho aggiunto la richiesta");
 
             }).catch((error) => {
                 console.log("C'è stato un errore: " + error);
