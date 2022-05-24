@@ -12,15 +12,15 @@ namespace Viaggiatore.Controllers.API
     {
         public IActionResult Get(string? cerca)
         {
-            
+
             List<Pacchetto> box = new List<Pacchetto>();
             using (ViaggioContext db = new ViaggioContext())
             {
-                 box = db.pacchetti.ToList();
+                box = db.pacchetti.ToList();
                 // LOGICA PER RICERCARE I POST CHE CONTENGONO NEL TIUOLO O NELLA DESCRIZIONE LA STRINGA DI RICERCA
                 if (cerca != null && cerca != "")
                 {
-                    box= db.pacchetti
+                    box = db.pacchetti
                         .Where(box => box.titolo
                         .Contains(cerca))
                         .ToList<Pacchetto>();
@@ -35,16 +35,31 @@ namespace Viaggiatore.Controllers.API
         {
             using (ViaggioContext db = new ViaggioContext())
             {
-                if(id != null)
+                if (id != null)
                 {
-              
-                   Pacchetto box = db.pacchetti.Where(box => box.id == id).FirstOrDefault<Pacchetto>();
+
+                    Pacchetto box = db.pacchetti.Where(box => box.id == id).FirstOrDefault<Pacchetto>();
                     return Ok(box);
                 }
                 else
                 {
                     return NotFound();
                 }
+            }
+        }
+        [HttpPost]
+        public IActionResult Post([FromBody] RichiestaUtente model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+            using (ViaggioContext db = new ViaggioContext())
+            {
+                RichiestaUtente box = new RichiestaUtente(model.nome, model.cognome, model.email, model.messaggio);
+                db.Add(model);
+                db.SaveChanges();
+                return Ok();
             }
         }
     }
