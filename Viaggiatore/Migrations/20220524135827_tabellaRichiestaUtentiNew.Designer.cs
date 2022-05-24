@@ -11,8 +11,8 @@ using Viaggiatore.Data;
 namespace Viaggiatore.Migrations
 {
     [DbContext(typeof(ViaggioContext))]
-    [Migration("20220523094134_collegoIlDatabase")]
-    partial class collegoIlDatabase
+    [Migration("20220524135827_tabellaRichiestaUtentiNew")]
+    partial class tabellaRichiestaUtentiNew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

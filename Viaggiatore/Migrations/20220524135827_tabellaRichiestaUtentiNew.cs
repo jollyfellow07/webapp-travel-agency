@@ -4,7 +4,7 @@
 
 namespace Viaggiatore.Migrations
 {
-    public partial class collegoIlDatabase : Migration
+    public partial class tabellaRichiestaUtentiNew : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
