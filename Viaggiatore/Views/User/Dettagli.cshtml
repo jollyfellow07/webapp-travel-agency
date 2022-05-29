@@ -13,10 +13,9 @@
     <div id="post-div" class="row js_post_cards">
         <!-- qui verranno mostrati gli elementi -->
     </div>
+ </div>
         <!-- Form -->
         <h1>Hai una richiesta?</h1>
-    <div>
-    </div>
     <div class="container mb-5">
      <form action="" method="post">
       <div class="form-row">
@@ -44,7 +43,8 @@
       </div>
       <button type="submit" class="btn btn-warning">Invia Richiesta</button>
     </form>
- </div>
+</div>
+
 
 
 
@@ -93,34 +93,37 @@
     
 
         //Funzione per il form
-            function Richiesta(event){
-                event.preventDefault();
-            var url = window.location.pathname;
-            var idBox = url.substring(url.lastIndexOf('/') + 1);
-                      var nome = document.getElementById('Nome').value; 
-                      var cognome = document.getElementById('Cognome').value; 
-                      var telefono = document.getElementById('Telefono').value; 
-                      var testo = document.getElementById('Testo').value; 
-                      var email = document.getElementById('Email').value;
-                      var id = idBox;
+            function Richiesta(event)
+            {
+                    event.preventDefault();
 
-                      var richiestaUtente = {
-                          nome: Nome,
-                          cognome: Cognome,
-                          email: Email,
-                          telefono: Telefono,
-                          testo: Testo,
-                          Viaggioid: id
-                      }
+                var url = window.location.pathname;
+                var idBox = url.substring(url.lastIndexOf('/') + 1);
+                          var nome = document.getElementById('Nome').value; 
+                          var cognome = document.getElementById('Cognome').value; 
+                          var telefono = document.getElementById('Telefono').value; 
+                          var testo = document.getElementById('Testo').value; 
+                          var email = document.getElementById('Email').value;
+                          var id = idBox;
 
-            axios.post('/api/box/post',  richiestaUtente ).then((result) => {
+                          var richiestaUtente = {
+                              Nome: nome,
+                              Cognome: cognome,
+                              Email: email,
+                              Telefono: telefono,
+                              Testo: testo,
+                              PacchettoId: id
+                          }
+
+                axios.post('/api/Richiesta/Post',  richhvbiestaUtente
+                ).then((result) => {
                           
-                alert("Ho aggiunto la richiesta");
+                    alert("Ho aggiunto la richiesta");
 
-            }).catch((error) => {
-                console.log("C'è stato un errore: " + error);
-            });
-        }
+                }).catch((error) => {
+                    console.log("C'è stato un errore: " + error);
+                });
+            }
 
     </script>
 }

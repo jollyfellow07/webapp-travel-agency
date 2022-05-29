@@ -21,7 +21,7 @@ namespace Viaggiatore.Models
         [Range(1, 2000, ErrorMessage = "Il valore inserito non è corretto")]
         public double Prezzo { get; set; }
 
-        public List<RichiestaUtente> richiesteUtenti { get; set; }
+        public List<RichiestaUtente>? richiesteUtenti { get; set; }
         public Pacchetto()
         {
 

@@ -47,19 +47,6 @@ namespace Viaggiatore.Controllers.API
                 }
             }
         }
-        [HttpPost]
-        public IActionResult Post([FromBody] RichiestaUtente model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return UnprocessableEntity(ModelState);
-            }
-            using (ViaggioContext db = new ViaggioContext())
-            {
-                db.Add(model);
-                db.SaveChanges();
-                return Ok();
-            }
-        }
+
     }
 }
